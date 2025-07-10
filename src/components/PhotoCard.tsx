@@ -1,14 +1,29 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import { Photo } from '../types/photo';
+import { useFavorite } from '@/context/FavoritesContext';
 
 type Props = {
   photo: Photo;
 };
 
-
 export function PhotoCard({ photo }: Props) {
+  const [animate, setAnimate] = useState(false);     // Animação do ícone de favorito
+
+  const { isFavorite, toggleFavorite } = useFavorite();
+
+  // Alterna entre adicionar/remover favorito e ativa a animação
+  const handleFavorite = () => {
+    toggleFavorite(photo);
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 300);
+  };
+
   return (
-    <div className="cursor-pointer shadow-sm hover:shadow-lg transition rounded-none md:rounded-xl">
+    <>
+      <div className="cursor-pointer shadow-sm hover:shadow-lg transition rounded-none md:rounded-xl">
         <Image
           className="h-80 w-full object-cover rounded-none md:rounded-t-xl duration-300"
           src={photo.urls.regular}
@@ -19,6 +34,8 @@ export function PhotoCard({ photo }: Props) {
           placeholder="blur"
           blurDataURL={photo.urls.thumb}
         />
+
+        {/* Informações do autor + botão de favorito */}
         <div className="flex justify-between items-center gap-2 space-x-3 my-2 mx-4">
           <div className="flex justify-between items-center gap-4">
             <Image
@@ -40,7 +57,23 @@ export function PhotoCard({ photo }: Props) {
               </a>
             </span>
           </div>
+
+          {/* Botão de curtir/descurtir com animação */}
+          <button
+            className={`cursor-pointer transform transition-transform duration-300 ${
+              animate ? 'scale-125' : 'scale-100'
+            }`}
+            type="button"
+            onClick={handleFavorite}
+          >
+            {isFavorite(photo.id) ? (
+              <i className="pi pi-heart-fill hover:opacity-60 transition duration-300 text-red-600"></i>
+            ) : (
+              <i className="pi pi-heart hover:opacity-15 transition duration-300"></i>
+            )}
+          </button>
         </div>
-    </div>
-  )
+      </div>
+    </>
+  );
 }
