@@ -1,1 +1,50 @@
 @import "tailwindcss";
+
+.p-image-action.p-link {
+    color: white;
+}
+
+.p-image-preview-indicator {
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+}
+
+.pi-arrow-down-left-and-arrow-up-right-to-center::before  {
+    position: relative;
+    top: 20px;
+    right: 20px;
+}
+
+.p-dialog .p-dialog-header {
+    padding-bottom: 0;
+}
+
+.pi-heart {
+    font-size: 20px;
+}
+
+.pi-heart-fill {
+    font-size: 20px;
+}
+
+.pi-bars {
+    font-size: 20px;
+}
+
+
+@media (min-width: 1280px) {
+.p-icon-field-right > .p-inputtext{
+    width: 36.5vw;
+}
+
+.pi.pi-bars {
+    display: none;
+}
+}
+
+@media (min-width: 768px) {
+.p-icon-field-right > .p-inputtext{
+    width: 90vw;
+}
+}

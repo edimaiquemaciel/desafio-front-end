@@ -14,6 +14,7 @@ type ModalProps = {
 export function Modal({ photo, visible, setVisible }: ModalProps) {
   const icon = (<i className="pi pi-arrow-down-left-and-arrow-up-right-to-center text-2xl"></i>);
 
+  // Cabeçalho do modal com foto e link do autor
   const header = (
     <div className="flex items-start space-x-3">
       <NextImage
@@ -26,13 +27,13 @@ export function Modal({ photo, visible, setVisible }: ModalProps) {
       <div className='flex flex-col items-start'>
         <p className="font-semibold">{photo.user.name}</p>
         <a
-        href={`https://unsplash.com/@${photo.user.username}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[12px] text-blue-600 hover:underline ml-1 -mt-1"
+          href={`https://unsplash.com/@${photo.user.username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[12px] text-blue-600 hover:underline ml-1 -mt-1"
         >
-        Ver perfil
-      </a>
+          Ver perfil
+        </a>
       </div>
     </div>
   );
@@ -47,6 +48,7 @@ export function Modal({ photo, visible, setVisible }: ModalProps) {
         dismissableMask
       >
         <div className="flex flex-col justify-center items-center space-y-4 px-0 mt-4 md:px-6">
+          {/* Imagem principal com preview e zoom */}
           <PrimeImage
             imageClassName="w-[500px] md:w-full md:w-[450px] md:h-[550px] object-cover"
             src={photo.urls.regular}
@@ -57,8 +59,11 @@ export function Modal({ photo, visible, setVisible }: ModalProps) {
             loading='lazy'
           />
 
+          {/* Descrição da foto, se disponível */}
           {photo.description && (
-            <p className="text-sm text-gray-600 text-center w-full md:w-2xl"><strong>Descrição:</strong> {photo.description}</p>
+            <p className="text-sm text-gray-600 text-center w-full md:w-2xl">
+              <strong>Descrição:</strong> {photo.description}
+            </p>
           )}
         </div>
       </Dialog>
