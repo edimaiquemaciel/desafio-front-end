@@ -104,7 +104,7 @@ NEXT_PUBLIC_BASE_URL=https://api.unsplash.com
 
 ```bash
 # Clone o repositório
-git clone https://github.com/edimaiquemaciel/teste-unsplash.git
+git clone https://github.com/edimaiquemaciel/desafio-front-end.git
 
 # Acesse o diretório
 cd instasplash
@@ -222,10 +222,10 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Edimaique Maciel**
 - LinkedIn: [Edimaique Maciel](https://www.linkedin.com/in/edimaique-maciel/)
-- GitHub: [@edimaique](https://github.com/edimaiquemaciel)
+- GitHub: [@edimaiquemaciel](https://github.com/edimaiquemaciel)
 
 ---
 
-🔗 **Demo**: [instasplash.vercel.app](https://instasplash.vercel.app)
+🔗 **Demo**: [desafio-front-end-red-sigma.vercel.app](https://desafio-front-end-red-sigma.vercel.app/)
 
 💡 **Nota**: Este projeto foi desenvolvido como parte de um desafio técnico, demonstrando conhecimentos em Next.js, TypeScript, Tailwind CSS e integração com APIs externas.
