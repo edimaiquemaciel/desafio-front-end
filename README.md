@@ -222,7 +222,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Edimaique Maciel**
 - LinkedIn: [Edimaique Maciel](https://www.linkedin.com/in/edimaique-maciel/)
-- GitHub: [@edimaique](https://github.com/edimaique)
+- GitHub: [@edimaique](https://github.com/edimaiquemaciel)
 
 ---
 
