@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Photo } from '../types/photo';
+import { Modal } from './Modal';
 import { useFavorite } from '@/context/FavoritesContext';
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export function PhotoCard({ photo }: Props) {
+  const [visible, setVisible] = useState(false);     // Controle do modal
   const [animate, setAnimate] = useState(false);     // Animação do ícone de favorito
 
   const { isFavorite, toggleFavorite } = useFavorite();
@@ -26,6 +28,7 @@ export function PhotoCard({ photo }: Props) {
       <div className="cursor-pointer shadow-sm hover:shadow-lg transition rounded-none md:rounded-xl">
         <Image
           className="h-80 w-full object-cover rounded-none md:rounded-t-xl duration-300"
+          onClick={() => setVisible(true)} // Abre o modal ao clicar na imagem
           src={photo.urls.regular}
           alt={photo.alt_description || 'Imagem Unsplash'}
           width={800}
@@ -74,6 +77,9 @@ export function PhotoCard({ photo }: Props) {
           </button>
         </div>
       </div>
+
+      {/* Modal com detalhes da foto */}
+      <Modal photo={photo} visible={visible} setVisible={setVisible} />
     </>
   );
 }
