@@ -5,32 +5,34 @@ import { useSearch } from "@/context/SearchContext";
 import { useEffect, useState } from 'react';
 import { SkeletonGallery } from "@/components/SkeletonGallery";
 
-
 export default function Home() {
-  const { photos, error, submittedQuery, hasSearched  } = useSearch();
+  const { photos, error, submittedQuery, hasSearched } = useSearch();
   const [loading, setLoading] = useState(true);
 
-
+  // Define se deve mostrar o skeleton (quando ainda está carregando e sem erro)
   useEffect(() => {
     setLoading(photos.length === 0 && !error);
   }, [photos, error]);
 
-  if (loading) return <SkeletonGallery />
+  if (loading) return <SkeletonGallery />;
 
   return (
     <div className="mb-4 mt-52 xl:mt-40 md:mt-54">
+      {/* Mostra o título da busca se houver resultados */}
       {hasSearched && submittedQuery && photos.length > 0 && (
         <h5 className="mb-4 mx-12 text-lg">
           Resultados de busca para: <strong>{submittedQuery}</strong>
         </h5>
       )}
 
+      {/* Mensagem se não houver resultados */}
       {hasSearched && photos.length === 0 && !error && (
         <p className="text-gray-500 text-center mt-8">
           Nenhum resultado encontrado para: <strong>{submittedQuery}</strong>
         </p>
       )}
 
+      {/* Mostra o erro, se existir */}
       {error && (
         <p className="text-red-500 text-center mt-8">{error}</p>
       )}
@@ -42,6 +44,7 @@ export default function Home() {
             : "grid gap-6 px-0 md:px-12 grid-cols-1 xl:grid-cols-3 md:grid-cols-1"
         }`}
       >
+        {/* Lista de fotos ou mensagem de erro (caso erro exista sem fotos) */}
         {photos.length !== 0 ? (
           photos.map((photo) => (
             <PhotoCard key={photo.id} photo={photo} />
